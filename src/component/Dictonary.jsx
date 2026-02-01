@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function Dictionary() {
+export default function XDictionary() {
   const [dictionary] = useState([
     { word: "React", meaning: "A JavaScript library for building user interfaces." },
     { word: "Component", meaning: "A reusable building block in React." },
@@ -12,16 +12,8 @@ export default function Dictionary() {
   const [notFound, setNotFound] = useState(false);
 
   const handleSearch = () => {
-    const trimmedSearch = searchTerm.trim();
-    
-    if (!trimmedSearch) {
-      setDefinition('');
-      setNotFound(false);
-      return;
-    }
-
     const foundWord = dictionary.find(
-      item => item.word.toLowerCase() === trimmedSearch.toLowerCase()
+      item => item.word.toLowerCase() === searchTerm.toLowerCase()
     );
 
     if (foundWord) {
@@ -68,16 +60,16 @@ export default function Dictionary() {
         </button>
       </div>
       
-      {notFound && (
+      {notFound ? (
         <p style={{ fontSize: '16px' }}>Word not found in the dictionary.</p>
-      )}
-      
-      {definition && (
+      ) : (
         <div>
           <h3 style={{ fontSize: '24px', fontWeight: 'bold', margin: '0' }}>
             Definition:
           </h3>
-          <p style={{ fontSize: '16px', margin: '0' }}>{definition}</p>
+          {definition && (
+            <p style={{ fontSize: '16px', margin: '0' }}>{definition}</p>
+          )}
         </div>
       )}
     </div>
