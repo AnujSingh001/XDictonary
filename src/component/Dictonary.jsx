@@ -8,13 +8,15 @@ export default function Dictionary() {
   ]);
   
   const [searchTerm, setSearchTerm] = useState('');
-  const [result, setResult] = useState('');
+  const [definition, setDefinition] = useState('');
+  const [notFound, setNotFound] = useState(false);
 
   const handleSearch = () => {
     const trimmedSearch = searchTerm.trim();
     
     if (!trimmedSearch) {
-      setResult('');
+      setDefinition('');
+      setNotFound(false);
       return;
     }
 
@@ -23,9 +25,11 @@ export default function Dictionary() {
     );
 
     if (foundWord) {
-      setResult(foundWord.meaning);
+      setDefinition(foundWord.meaning);
+      setNotFound(false);
     } else {
-      setResult('Word not found in the dictionary.');
+      setDefinition('');
+      setNotFound(true);
     }
   };
 
@@ -64,20 +68,18 @@ export default function Dictionary() {
         </button>
       </div>
       
-      <div>
-        {result === 'Word not found in the dictionary.' ? (
-          <p style={{ fontSize: '16px' }}>{result}</p>
-        ) : result ? (
-          <div>
-            <h3 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '10px' }}>
-              Definition:
-            </h3>
-            <p style={{ fontSize: '16px', margin: '0' }}>{result}</p>
-          </div>
-        ) : (
-          <h3 style={{ fontSize: '24px', fontWeight: 'bold' }}>Definition:</h3>
-        )}
-      </div>
+      {notFound && (
+        <p style={{ fontSize: '16px' }}>Word not found in the dictionary.</p>
+      )}
+      
+      {definition && (
+        <div>
+          <h3 style={{ fontSize: '24px', fontWeight: 'bold', margin: '0' }}>
+            Definition:
+          </h3>
+          <p style={{ fontSize: '16px', margin: '0' }}>{definition}</p>
+        </div>
+      )}
     </div>
   );
 }
