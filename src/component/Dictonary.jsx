@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function XDictionary() {
+export default function Dictionary() {
   const [dictionary] = useState([
     { word: "React", meaning: "A JavaScript library for building user interfaces." },
     { word: "Component", meaning: "A reusable building block in React." },
@@ -12,6 +12,12 @@ export default function XDictionary() {
   const [notFound, setNotFound] = useState(false);
 
   const handleSearch = () => {
+    if (searchTerm.trim() === '') {
+      setDefinition('');
+      setNotFound(false);
+      return;
+    }
+
     const foundWord = dictionary.find(
       item => item.word.toLowerCase() === searchTerm.toLowerCase()
     );
