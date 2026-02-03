@@ -81,9 +81,7 @@ export default function Dictionary() {
           <h3 style={{ fontSize: '24px', fontWeight: 'bold', margin: '0' }}>
             Definition:
           </h3>
-          {definition && (
-            <p style={{ fontSize: '16px', margin: '0' }}>{definition}</p>
-          )}
+            <p style={{ fontSize: '16px', margin: '0' }}>{definition}</p> 
         </div>
       )}
     </div>
