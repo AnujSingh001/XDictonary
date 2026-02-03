@@ -4,7 +4,10 @@ export default function Dictionary() {
   const [dictionary] = useState([
     { word: "React", meaning: "A JavaScript library for building user interfaces." },
     { word: "Component", meaning: "A reusable building block in React." },
-    { word: "State", meaning: "An object that stores data for a component." }
+    { word: "State", meaning: "An object that stores data for a component." },
+    { word: "Props", meaning: "Short for properties, used to pass data to components." },
+    { word: "Hook", meaning: "A special function that lets you use state and other React features." },
+    {word: "next", meaning: "A React framework for server-side rendering and static site generation."}
   ]);
   
   const [searchTerm, setSearchTerm] = useState('');
