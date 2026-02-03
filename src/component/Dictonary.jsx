@@ -17,7 +17,7 @@ export default function Dictionary() {
   const handleSearch = () => {
     if (searchTerm.trim() === '') {
       setDefinition('');
-      setNotFound(false);
+      setNotFound(true);
       return;
     }
 
