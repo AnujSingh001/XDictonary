@@ -67,7 +67,12 @@ export default function Dictionary() {
       </div>
       
       {notFound ? (
+        <div>
+        <h3 style={{ fontSize: '24px', fontWeight: 'bold', margin: '0' }}>
+            Definition:
+          </h3>
         <p style={{ fontSize: '16px' }}>Word not found in the dictionary.</p>
+        </div>
       ) : (
         <div>
           <h3 style={{ fontSize: '24px', fontWeight: 'bold', margin: '0' }}>
